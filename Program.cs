@@ -1,14 +1,11 @@
-using Emprestimo.Domain.Repositories;
-using Emprestimo.Infra.Persistence;
-using Emprestimo.Infra.Repositories;
+using Emprestimo.Infra;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddDbContext<BibliotecaDbContext>(options =>
+builder.Services.AddInfra(options =>
     options.UseInMemoryDatabase("EmprestimoDb"));
-builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 
 var app = builder.Build();
 
