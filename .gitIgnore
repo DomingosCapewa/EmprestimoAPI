@@ -1,0 +1,19 @@
+bin/
+obj/
+
+
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+TestResults/
+*.log
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
