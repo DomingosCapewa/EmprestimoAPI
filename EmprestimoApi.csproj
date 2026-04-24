@@ -8,12 +8,16 @@
 
   <ItemGroup>
     <Compile Remove="src\**\*.cs" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.14" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="src\Emprestimo.Application\Emprestimo.Application.csproj" />
     <ProjectReference Include="src\Emprestimo.Infra\Emprestimo.Infra.csproj" />
+    <ProjectReference Include="src\Emprestimo.Presentation\Emprestimo.Presentation.csproj" />
+    <ProjectReference Include="src\Emprestimo.Domain\Emprestimo.Domain.csproj" />
   </ItemGroup>
 
 </Project>

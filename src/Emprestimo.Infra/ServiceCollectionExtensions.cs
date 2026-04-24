@@ -1,4 +1,4 @@
-using Emprestimo.Domain.Repositories;
+using Emprestimo.Application.Interfaces;
 using Emprestimo.Infra.Persistence;
 using Emprestimo.Infra.Repositories;
 using Microsoft.EntityFrameworkCore;

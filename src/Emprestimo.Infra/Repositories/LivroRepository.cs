@@ -1,5 +1,5 @@
+using Emprestimo.Application.Interfaces;
 using Emprestimo.Domain.Entities;
-using Emprestimo.Domain.Repositories;
 using Emprestimo.Infra.Persistence;
 
 namespace Emprestimo.Infra.Repositories;
@@ -20,7 +20,17 @@ public class LivroRepository : ILivroRepository
 
     public void Salvar(Livro livro)
     {
-        _context.Livros.Add(livro);
+        var existente = _context.Livros.FirstOrDefault(item => item.Id == livro.Id);
+
+        if (existente is null)
+        {
+            _context.Livros.Add(livro);
+        }
+        else
+        {
+            _context.Entry(existente).CurrentValues.SetValues(livro);
+        }
+
         _context.SaveChanges();
     }
 }

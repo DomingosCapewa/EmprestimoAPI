@@ -8,7 +8,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Emprestimo.Domain\Emprestimo.Domain.csproj" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.14" />
-  </ItemGroup>
+    <ProjectReference Include="..\Emprestimo.Application\Emprestimo.Application.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.0" />  
+    </ItemGroup>
 
 </Project>

@@ -8,6 +8,9 @@ public class Livro
 
     public Livro(string titulo)
     {
+        if (string.IsNullOrWhiteSpace(titulo))
+            throw new ArgumentException("Título inválido.", nameof(titulo));
+
         Id = Guid.NewGuid();
         Titulo = titulo;
         EstaEmprestado = false;

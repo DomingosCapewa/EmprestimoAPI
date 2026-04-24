@@ -1,6 +1,6 @@
 using Emprestimo.Domain.Entities;
 
-namespace Emprestimo.Domain.Repositories;
+namespace Emprestimo.Application.Interfaces;
 
 public interface ILivroRepository
 {

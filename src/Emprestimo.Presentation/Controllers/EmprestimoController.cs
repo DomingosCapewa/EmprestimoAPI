@@ -1,3 +1,4 @@
+using Emprestimo.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emprestimo.Presentation.Controllers;
@@ -6,9 +7,23 @@ namespace Emprestimo.Presentation.Controllers;
 [Route("api/[controller]")]
 public class EmprestimoController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Get()
+    private readonly IEmprestimoService _emprestimoService;
+
+    public EmprestimoController(IEmprestimoService emprestimoService)
     {
-        return Ok("Presentation layer ativa.");
+        _emprestimoService = emprestimoService;
+    }
+
+    [HttpPost("{livroId:guid}/emprestar")]
+    public IActionResult Emprestar(Guid livroId)
+    {
+        _emprestimoService.EmprestarLivro(livroId);
+        return NoContent();
+    }
+
+    [HttpPost("{livroId:guid}/devolver")]
+    public IActionResult Devolver()
+    {
+        return NoContent();
     }
 }
