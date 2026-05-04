@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddDbContext<BibliotecaDbContext>(configureDb);
         services.AddScoped<ILivroRepository, LivroRepository>();
+        services.AddScoped<IBibliotecarioRepository, BibliotecarioRepository>();
 
         return services;
     }

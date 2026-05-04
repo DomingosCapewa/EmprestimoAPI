@@ -9,7 +9,8 @@ obj/
 *.user
 *.userosscache
 *.sln.docstates
-
+*Migrations/
+*appsettings.json
 TestResults/
 *.log
 coverage/

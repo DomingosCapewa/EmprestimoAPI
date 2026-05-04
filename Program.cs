@@ -6,8 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddApplication();
+var configuredConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+if (string.IsNullOrWhiteSpace(configuredConnectionString))
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' não configurada.");
+}
+
 builder.Services.AddInfra(options =>
-    options.UseInMemoryDatabase("EmprestimoDb"));
+    options.UseMySql(
+        configuredConnectionString,
+        ServerVersion.AutoDetect(configuredConnectionString)
+    ));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -18,6 +28,7 @@ builder.Services.AddSwaggerGen(options =>
         Version = "v1"
     });
 });
+
 
 var app = builder.Build();
 
@@ -32,13 +43,13 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
-
-app.MapControllers();
-
 app.MapGet("/", () =>
 {
     return Results.Redirect("/swagger");
 });
+app.UseHttpsRedirection();
+
+app.MapControllers();
+
 
 app.Run();

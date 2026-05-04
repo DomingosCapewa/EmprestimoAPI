@@ -11,6 +11,15 @@ public class EmprestimoService : IEmprestimoService
         _livroRepository = livroRepository;
     }
 
+    public void DevolverLivro(Guid livroId)
+    {
+        var livro = _livroRepository.ObterPorId(livroId)
+            ?? throw new InvalidOperationException("Livro não encontrado.");
+
+        livro.RealizarDevolucao();
+        _livroRepository.Salvar(livro);
+    }
+
     public void EmprestarLivro(Guid livroId)
     {
         var livro = _livroRepository.ObterPorId(livroId)

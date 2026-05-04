@@ -16,11 +16,29 @@ public class Livro
         EstaEmprestado = false;
     }
 
+    public Livro(Guid id, string titulo, bool estaEmprestado)
+    {
+        if (string.IsNullOrWhiteSpace(titulo))
+            throw new ArgumentException("Título inválido.", nameof(titulo));
+
+        Id = id;
+        Titulo = titulo;
+        EstaEmprestado = estaEmprestado;
+    }
+
     public void RealizarEmprestimo()
     {
         if (EstaEmprestado)
             throw new Exception("Livro já está com outro usuário.");
 
         EstaEmprestado = true;
+    }
+
+    public void RealizarDevolucao()
+    {
+        if (!EstaEmprestado)
+            throw new Exception("Livro já está disponível.");
+
+        EstaEmprestado = false;
     }
 }
